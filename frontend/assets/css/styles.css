@@ -1,0 +1,2 @@
+:root { --bg-primary:#111; --text-primary:#fff; } 
+body { background:var(--bg-primary); color:var(--text-primary); font-family:sans-serif; } 
