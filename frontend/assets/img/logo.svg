@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect rx="8" width="160" height="40" fill="#171824"/>
+  <g transform="translate(10,6)">
+    <circle cx="12" cy="14" r="8" fill="#7C5CFF"/>
+    <path d="M18 6 L26 14 L18 22" stroke="#00D4FF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="40" y="18" fill="#E6EAF2" font-family="Inter, Arial" font-size="14">RankForge</text>
+  </g>
+</svg>

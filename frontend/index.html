@@ -1,11 +1,134 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-<title>AI SEO Optimizer</title> 
-<link rel="stylesheet" href="assets/css/styles.css"> 
-</head> 
-<body> 
-<h1>AI SEO Optimizer Dashboard</h1> 
-<script src="assets/js/api.js"></script> 
-</body> 
-</html> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>AI SEO Optimizer</title>
+	<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+	<header class="site-header">
+		<div class="brand">
+			<img src="assets/img/logo.svg" alt="AI SEO Optimizer logo" class="logo">
+			<h1>AI SEO Optimizer</h1>
+		</div>
+		<nav class="top-nav">
+			<button class="nav-btn active" data-section="overview">Overview</button>
+			<button class="nav-btn" data-section="cro">CRO</button>
+			<button class="nav-btn" data-section="gmb">GMB</button>
+			<button class="nav-btn" data-section="settings">Settings</button>
+		</nav>
+	</header>
+
+	<div class="app-grid">
+		<aside class="sidebar" id="sidebar">
+			<div class="sidebar-top">
+				<img src="assets/img/logo.svg" class="logo-sm" alt="logo">
+				<strong class="app-name">RankForge</strong>
+			</div>
+			<nav class="side-nav">
+				<button class="side-link active" data-section="overview">Dashboard</button>
+				<button class="side-link" data-section="cro">CRO Audit</button>
+				<button class="side-link" data-section="gmb">GMB Audit</button>
+				<button class="side-link" data-section="reports">Reports</button>
+				<button class="side-link" data-section="settings">Settings</button>
+			</nav>
+			<div class="sidebar-bottom">Pro • Agency</div>
+		</aside>
+
+		<main class="main">
+			<section id="section-overview" class="panel active">
+				<h2>Overview</h2>
+				<div class="quick-cards">
+					<div class="card metric">
+						<div class="label">CRO Score</div>
+						<div class="metric-value" data-value="72">72</div>
+						<div class="sub">Based on last audit</div>
+					</div>
+					<div class="card metric">
+						<div class="label">GMB Score</div>
+						<div class="metric-value" data-value="81">81</div>
+						<div class="sub">Based on last audit</div>
+					</div>
+					<div class="card metric">
+						<div class="label">SEO Score</div>
+						<div class="metric-value" data-value="68">68</div>
+						<div class="sub">Last 30 days</div>
+					</div>
+					<div class="card metric">
+						<div class="label">Critical Issues</div>
+						<div class="metric-value" data-value="3">3</div>
+						<div class="sub">Open items</div>
+					</div>
+				</div>
+
+				<div class="ai-card card card-ai">
+					<h3>AI Insight Summary</h3>
+					<p id="ai-summary">Run an audit to see AI recommendations.</p>
+					<div class="actions">
+						<button class="btn btn-primary" data-section="cro">Run CRO Audit</button>
+						<button class="btn" data-section="gmb">Run GMB Audit</button>
+					</div>
+				</div>
+			</section>
+
+			<section id="section-cro" class="panel">
+				<h2>Conversion Rate Optimization</h2>
+				<form id="form-cro" class="tool-form">
+					<label>Page URL
+						<input name="url" type="url" class="input" placeholder="https://example.com/landing" required>
+					</label>
+					<label>Primary Goal
+						<input name="goal" type="text" class="input" placeholder="Signups / Sales / Leads">
+					</label>
+					<label>Notes (optional)
+						<textarea name="notes" class="textarea" rows="4" placeholder="Add context for the audit"></textarea>
+					</label>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">Run Audit</button>
+						<button type="button" id="btn-cro-reset" class="btn">Reset</button>
+					</div>
+				</form>
+			</section>
+
+			<section id="section-gmb" class="panel">
+				<h2>Google My Business (GMB) Optimizer</h2>
+				<form id="form-gmb" class="tool-form">
+					<label>Business Name
+						<input name="business_name" type="text" class="input" placeholder="Your business name" required>
+					</label>
+					<label>Location / Address
+						<input name="address" type="text" class="input" placeholder="City, State or full address">
+					</label>
+					<label>Primary Category
+						<input name="category" type="text" class="input" placeholder="e.g., Restaurant, Dentist">
+					</label>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">Optimize GMB</button>
+						<button type="button" id="btn-gmb-reset" class="btn">Reset</button>
+					</div>
+				</form>
+			</section>
+
+			<section id="section-results" class="panel results-panel">
+				<h2>Results</h2>
+				<div id="results" class="results-area empty">No results yet. Run a tool to see suggestions.</div>
+			</section>
+
+			<section id="section-settings" class="panel">
+				<h2>Settings</h2>
+				<label>API Base URL
+					<input id="setting-api-url" type="url" class="input" placeholder="http://127.0.0.1:8000" value="http://127.0.0.1:8000">
+				</label>
+				<div class="form-actions">
+					<button id="save-settings" class="btn btn-primary">Save</button>
+				</div>
+			</section>
+		</main>
+	</div>
+
+	<footer class="site-footer">Made with ♥ — RankForge</footer>
+
+	<script src="assets/js/api.js"></script>
+</body>
+</html>
