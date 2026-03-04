@@ -12,6 +12,8 @@ class Issue(BaseModel):
     level: str
     title: str
     detail: Optional[str] = None
+    severity: Optional[str] = None
+    penalty: Optional[int] = None
 
 
 class Metrics(BaseModel):
@@ -19,11 +21,21 @@ class Metrics(BaseModel):
     reviews: float = 0
     photos: float = 0
     posts: float = 0
-    engagement: float = 0
     rating: float = 0
     review_count: int = 0
     photo_count: int = 0
     post_count: int = 0
+
+
+class ProfileData(BaseModel):
+    rating: float = 0
+    review_count: int = 0
+    categories: List[str] = []
+    description: Optional[str] = None
+    phone: Optional[str] = None
+    website: Optional[str] = None
+    address: Optional[str] = None
+    hours: Dict[str, str] = {}
 
 
 class ExtractedData(BaseModel):
@@ -32,14 +44,21 @@ class ExtractedData(BaseModel):
     categories: List[str] = []
     phone: Optional[str] = None
     website: Optional[str] = None
+    address: Optional[str] = None
+    hours: Dict[str, str] = {}
+    description: Optional[str] = None
 
 
 class GMBAuditResponse(BaseModel):
     success: bool = True
     score: int
-    issues: List[Issue]
-    recommendations: List[str]
+    issues: List[Issue] = []
+    recommendations: List[str] = []
     ai_suggestions: List[str] = []
     metrics: Metrics = {}
     extracted_data: Optional[ExtractedData] = None
+    data_source: Optional[str] = None
+    data_note: Optional[str] = None
+    warning: Optional[str] = None
+    extraction_status: Optional[str] = None
     error: Optional[str] = None

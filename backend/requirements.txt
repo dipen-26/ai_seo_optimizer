@@ -6,3 +6,5 @@ python-dotenv
 aiohttp
 beautifulsoup4
 lxml
+playwright
+python-json-logger

@@ -11,13 +11,15 @@ async def cro_audit(data: CROAuditRequest):
     """
     Perform CRO audit on a URL.
     
-    - **url**: Page URL to audit
+    - **url**: Page URL to audit (required)
     - **goal**: Optional conversion goal (e.g., "Signups", "Sales")
     - **notes**: Optional context for the audit
+    - **industry**: Industry for weighted scoring (saas, restaurant, ecommerce, healthcare, real_estate, default)
     """
     result = await cro_service.audit_url(
         url=str(data.url),
         goal=data.goal,
-        notes=data.notes
+        notes=data.notes,
+        industry=data.industry
     )
     return result

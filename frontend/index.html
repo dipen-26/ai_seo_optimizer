@@ -16,7 +16,6 @@
 			<button class="nav-btn active" data-section="overview">Overview</button>
 			<button class="nav-btn" data-section="cro">CRO</button>
 			<button class="nav-btn" data-section="gmb">GMB</button>
-			<button class="nav-btn" data-section="settings">Settings</button>
 		</nav>
 	</header>
 
@@ -31,7 +30,6 @@
 				<button class="side-link" data-section="cro">CRO Audit</button>
 				<button class="side-link" data-section="gmb">GMB Audit</button>
 				<button class="side-link" data-section="reports">Reports</button>
-				<button class="side-link" data-section="settings">Settings</button>
 			</nav>
 			<div class="sidebar-bottom">Pro • Agency</div>
 		</aside>
@@ -78,6 +76,16 @@
 					<label>Page URL
 						<input name="url" type="url" class="input" placeholder="https://example.com/landing" required>
 					</label>
+					<label>Industry
+						<select name="industry" class="input">
+							<option value="default">Default</option>
+							<option value="saas">SaaS / Software</option>
+							<option value="ecommerce">E-Commerce</option>
+							<option value="restaurant">Restaurant</option>
+							<option value="healthcare">Healthcare</option>
+							<option value="real_estate">Real Estate</option>
+						</select>
+					</label>
 					<label>Primary Goal
 						<input name="goal" type="text" class="input" placeholder="Signups / Sales / Leads">
 					</label>
@@ -115,19 +123,28 @@
 				<div id="results" class="results-area empty">No results yet. Run a tool to see suggestions.</div>
 			</section>
 
-			<section id="section-settings" class="panel">
-				<h2>Settings</h2>
-				<label>API Base URL
-					<input id="setting-api-url" type="url" class="input" placeholder="http://127.0.0.1:8000" value="http://127.0.0.1:8000">
-				</label>
-				<div class="form-actions">
-					<button id="save-settings" class="btn btn-primary">Save</button>
+			<section id="section-reports" class="panel">
+				<h2>Reports</h2>
+				<div id="reports-container" class="reports-container">
+					<div id="no-reports" class="empty-state">
+						<h3>No Reports Yet</h3>
+						<p>Run audits to generate reports. Your audit history will appear here.</p>
+					</div>
+					<div id="reports-list" style="display: none;" class="reports-list"></div>
 				</div>
 			</section>
 		</main>
 	</div>
 
 	<footer class="site-footer">Made with ♥ — RankForge</footer>
+
+	<!-- Loading Spinner -->
+	<div id="loading-spinner" class="loading-spinner hidden">
+		<div class="spinner-content">
+			<div class="spinner"></div>
+			<p id="spinner-text">Loading...</p>
+		</div>
+	</div>
 
 	<script src="assets/js/api.js"></script>
 </body>
