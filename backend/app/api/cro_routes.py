@@ -1,17 +1,23 @@
 from fastapi import APIRouter
-from app.schemas.cro_schema import CROAuditRequest, CROAuditResponse, Issue
+from ..schemas.cro_schema import CROAuditRequest, CROAuditResponse
+from ..services.cro_service import CROService
 
 router = APIRouter()
+cro_service = CROService()
 
 
 @router.post('/audit', response_model=CROAuditResponse)
 async def cro_audit(data: CROAuditRequest):
-    issues = [
-        Issue(level='critical', title='Missing meta description', detail='No meta description found.'),
-        Issue(level='improve', title='Weak CTA', detail='CTA is generic; consider stronger action verbs.'),
-    ]
-    return {
-        'score': 85,
-        'issues': [i.dict() for i in issues],
-        'recommendations': ['Add a clear meta description', 'Use action-oriented CTA copy']
-    }
+    """
+    Perform CRO audit on a URL.
+    
+    - **url**: Page URL to audit
+    - **goal**: Optional conversion goal (e.g., "Signups", "Sales")
+    - **notes**: Optional context for the audit
+    """
+    result = await cro_service.audit_url(
+        url=str(data.url),
+        goal=data.goal,
+        notes=data.notes
+    )
+    return result
